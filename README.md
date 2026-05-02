@@ -69,7 +69,41 @@ flowchart TD
 
 ## Install
 
-**Per-repo:** applies to one project.
+### One-click (recommended)
+
+**Global** — applies to every project on your machine:
+
+```sh
+# macOS / Linux / WSL
+curl -fsSL https://raw.githubusercontent.com/adityaarakeri/yolo/main/SKILL.md \
+  | install -D /dev/stdin ~/.claude/skills/yolo/SKILL.md
+```
+
+```powershell
+# Windows (PowerShell)
+$dest = "$HOME\.claude\skills\yolo\SKILL.md"
+New-Item -ItemType Directory -Force -Path (Split-Path $dest) | Out-Null
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/adityaarakeri/yolo/main/SKILL.md" -OutFile $dest
+```
+
+**Per-repo** — applies to one project only:
+
+```sh
+# macOS / Linux / WSL
+curl -fsSL https://raw.githubusercontent.com/adityaarakeri/yolo/main/SKILL.md \
+  | install -D /dev/stdin .claude/skills/yolo/SKILL.md
+```
+
+```powershell
+# Windows (PowerShell)
+$dest = ".claude\skills\yolo\SKILL.md"
+New-Item -ItemType Directory -Force -Path (Split-Path $dest) | Out-Null
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/adityaarakeri/yolo/main/SKILL.md" -OutFile $dest
+```
+
+### Manual (if you have the repo cloned)
+
+**Per-repo:**
 
 ```sh
 # macOS / Linux / WSL
@@ -83,7 +117,7 @@ New-Item -ItemType Directory -Force -Path .claude\skills\yolo | Out-Null
 Copy-Item SKILL.md .claude\skills\yolo\SKILL.md
 ```
 
-**Global:** applies to every project on your machine.
+**Global:**
 
 ```sh
 # macOS / Linux / WSL
